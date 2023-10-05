@@ -12,19 +12,19 @@
     <!-- Section-->
     <section class="py-5">
         <div class="container px-4 px-lg-5 mt-5">
-            <div class="row gx-4 gx-lg-5 col-md-5 justify-content-center">
+            <div class="row justify-content-center">
                 @foreach ($products as $product)
-                    <div class="col mb-5">
-                        <div class="card h-100">
+                    <div class="col-md-4 mb-3">
+                        <div class="card">
                             <!-- Product image-->
                             <img class="card-img-top" src="https://source.unsplash.com/450x300?{{ $product->category->name }}" alt="Product Image" />
                             <!-- Product details-->
                             <div class="card-body p-4">
                                 <div class="text-center">
                                     <!-- Product name-->
-                                    <h5 class="fw-bolder">{{ $product->name }}</h5>
+                                    <h5 class="fw-bolder"><a href="/detail/{{ $product->name }}" class="text-decoration-none">{{ $product->name }}</a></h5>
                                     <!-- Product price-->
-                                    Rp @convert($product->price),-
+                                    Rp @convert($product->price) ,-
                                 </div>
                             </div>
                             <!-- Product actions-->
@@ -37,5 +37,6 @@
                 @endforeach
             </div>
         </div>
+        {{ $products->links() }}
     </section>
 @endsection
