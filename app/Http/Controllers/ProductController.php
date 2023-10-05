@@ -13,6 +13,7 @@ class ProductController extends Controller
     public function index()
     {
         return view('index', [
+            'title' => 'Shop Homepage',
             'products' => Product::latest()->paginate(9)
         ]);
     }
@@ -38,7 +39,10 @@ class ProductController extends Controller
      */
     public function show(Product $product)
     {
-        //
+        return view('detail', [
+            'title' => $product->name,
+            'product' => $product
+        ]);
     }
 
     /**

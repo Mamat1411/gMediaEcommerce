@@ -1,5 +1,4 @@
 @extends('layouts.main')
-@section('title', 'E-Commerce Homepage')
 @section('container')
     <!-- Header-->
     <header class="bg-dark py-5">
@@ -25,12 +24,12 @@
                                     <!-- Product name-->
                                     <h5 class="fw-bolder">{{ $product->name }}</h5>
                                     <!-- Product price-->
-                                    Rp {{ $product->price }},-
+                                    Rp @convert($product->price),-
                                 </div>
                             </div>
                             <!-- Product actions-->
                             <div class="card-footer p-4 pt-0 border-top-0 bg-transparent d-flex justify-content-center">
-                                <div class="text-center"><a class="btn btn-info mt-auto mx-2" href="#">Detail</a></div>
+                                <div class="text-center"><a class="btn btn-info mt-auto mx-2" href="/detail/{{ $product->name }}">Detail</a></div>
                                 <div class="text-center"><a class="btn btn-warning mt-auto" href="#">Add to cart</a></div>
                             </div>
                         </div>

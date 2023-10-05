@@ -14,3 +14,6 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', 'ProductController@index');
+Route::get('/detail/{product:name}', 'ProductController@show');
+Route::get('/login', 'LoginController@index');
+Route::get('/register', 'RegisterController@create');
