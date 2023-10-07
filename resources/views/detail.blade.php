@@ -7,8 +7,8 @@
                 <div class="col-md-6">
                     <h1 class="display-5 fw-bolder">{{ $product->name }}</h1>
                     <div class="fs-5">
-                        <span>in {{ $product->category->name }}</span>
-                        <span>By {{ $product->brand->name }}</span>
+                        <span>in <a href="/?category={{ $product->category->name }}" class="text-decoration-none">{{ $product->category->name }}</a></span>
+                        <span>By <a href="/?brand={{ $product->brand->name }}" class="text-decoration-none">{{ $product->brand->name }}</a></span>
                     </div>
                     <div class="fs-5 mb-5">
                         <span>Rp @convert($product->price),-</span>
