@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Brand;
+use App\Models\Category;
 use App\Models\User;
 use Illuminate\Http\Request;
 
@@ -21,7 +23,9 @@ class RegisterController extends Controller
     public function create()
     {
         return view('register.index', [
-            'title' => "Registration Page"
+            'title' => "Registration Page",
+            "categories" => Category::all(),
+            "brands" => Brand::all()
         ]);
     }
 
@@ -34,14 +38,16 @@ class RegisterController extends Controller
             'name' => 'required|max:300',
             'username' => 'required|unique:users|max:300',
             'email' => 'required|email:dns|unique:users|max:300',
-            'password' => 'required|min:8'
+            'password' => 'required|min:8',
+            'role' => 'required'
         ]);
 
         User::create([
             'name' => $request->name,
             'username' => $request->username,
             'email' => $request->email,
-            'password' => bcrypt($request['password'])
+            'password' => bcrypt($request['password']),
+            'role' => $request->role
         ]);
 
         return redirect('/login') -> with('status', 'You\'ve Registered. Please Sign In Now');

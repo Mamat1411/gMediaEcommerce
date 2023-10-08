@@ -27,7 +27,7 @@
                                         <!-- Product name-->
                                         <h5 class="fw-bolder"><a href="/detail/{{ $product->name }}" class="text-decoration-none">{{ $product->name }}</a></h5>
                                         <!-- Product price-->
-                                        Rp @convert($product->price) ,-
+                                        Rp @convert($product->price),-
                                     </div>
                                 </div>
                                 <!-- Product actions-->

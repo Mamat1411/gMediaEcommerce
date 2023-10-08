@@ -6,6 +6,7 @@
                 <h1 class="h3 mb-3 fw-normal text-center">Registration Form</h1>
                 <form action="/register" method="POST">
                     @csrf
+                    <input type="hidden" name="role" value="user">
                     <div class="form-floating">
                         <input type="text" class="form-control rounded-top @error('name') is-invalid @enderror" name="name" id="name"
                             placeholder="Your Name Here" value="{{ old('name') }}" required>
