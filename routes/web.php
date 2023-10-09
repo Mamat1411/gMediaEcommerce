@@ -22,3 +22,14 @@ Route::post('/logout', 'LoginController@logout');
 
 Route::get('/register', 'RegisterController@create')->middleware('guest');
 Route::post('/register', 'RegisterController@store');
+
+Route::group(['middleware' => 'auth'], function () {
+    Route::get('/dashboard', 'DashboardController@index');
+    Route::get('/dashboard/products', 'DashboardProductsController@index');
+    Route::get('/dashboard/products/create', 'DashboardProductsController@create');
+    Route::post('/dashboard/products', 'DashboardProductsController@store');
+    Route::get('/dashboard/products/{product:name}', 'DashboardProductsController@show');
+    Route::get('/dashboard/products/edit/{product:name}', 'DashboardProductsController@edit');
+    Route::patch('/dashboard/products/{product:name}', 'DashboardProductsController@update');
+    Route::delete('/dashboard/products/{product:name}', 'DashboardProductsController@destroy');
+});

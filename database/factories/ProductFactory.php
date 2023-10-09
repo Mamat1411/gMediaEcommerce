@@ -22,7 +22,7 @@ class ProductFactory extends Factory
             'name' => fake()->sentence(mt_rand(2,4), false),
             'price' => fake()->randomNumber(mt_rand(7, 8), true),
             'description' => fake()->realText(),
-            'stock' => mt_rand(1,2)
+            'stock' => mt_rand(1,5)
         ];
     }
 }

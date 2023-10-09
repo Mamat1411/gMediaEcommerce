@@ -54,7 +54,7 @@ class DatabaseSeeder extends Seeder
         ]);
 
         Brand::create([
-            'name' => 'HP'
+            'name' => 'Lenovo'
         ]);
 
         Brand::create([

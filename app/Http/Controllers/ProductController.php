@@ -47,7 +47,9 @@ class ProductController extends Controller
         return view('detail', [
             'title' => $product->name,
             'product' => $product,
-            'relatedProducts' => $relatedProducts
+            'relatedProducts' => $relatedProducts,
+            'categories' => Category::all(),
+            'brands' => Brand::all()
         ]);
     }
 
