@@ -28,7 +28,6 @@
                 </li>
             </ul>
             <form action="/" class="d-flex">
-                @csrf
                 @if (request('category'))
                     <input type="hidden" name="category" value="{{ request('category') }}">
                 @elseif (request('brand'))
