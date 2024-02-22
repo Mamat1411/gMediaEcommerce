@@ -12,10 +12,13 @@ class Product extends Model
     protected $guarded = ['id'];
     protected $with = ['brand', 'category'];
 
-    public function scopeFilter($query, array $filters) : void{
+    public function scopeFilter($query, array $filters): void
+    {
         $query->when($filters['search'] ?? false, function ($query, $search) {
-            return $query->where('name', 'like', '%'. $search .'%')
-                  ->orWhere('description', 'like', '%'. $search .'%');
+            $query->where(function ($query) use ($search) {
+                $query->where('name', 'like', '%' . $search . '%')
+                    ->orWhere('description', 'like', '%' . $search . '%');
+            });
         });
 
         $query->when($filters['category'] ?? false, function ($query, $category) {
@@ -31,11 +34,13 @@ class Product extends Model
         });
     }
 
-    public function brand() : BelongsTo {
+    public function brand(): BelongsTo
+    {
         return $this->belongsTo(Brand::class, 'brandId');
     }
 
-    public function category() : BelongsTo {
+    public function category(): BelongsTo
+    {
         return $this->belongsTo(Category::class, 'categoryId');
     }
 }
