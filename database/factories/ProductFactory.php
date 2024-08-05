@@ -20,6 +20,7 @@ class ProductFactory extends Factory
             'categoryId' => mt_rand(1,2),
             'brandId' => mt_rand(1,9),
             'name' => fake()->sentence(mt_rand(2,4), false),
+            'slug' => fake()->slug(mt_rand(2,8)),
             'price' => fake()->randomNumber(mt_rand(7, 8), true),
             'description' => fake()->realText(),
             'stock' => mt_rand(1,5)
