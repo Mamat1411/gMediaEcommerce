@@ -12,7 +12,7 @@
                     </a>
                     <ul class="dropdown-menu">
                         @foreach ($categories as $category)
-                            <li><a class="dropdown-item" href="/?category={{ $category->name }}">{{ $category->name }}</a></li>
+                            <li><a class="dropdown-item" href="/?category={{ $category->slug }}">{{ $category->name }}</a></li>
                         @endforeach
                     </ul>
                 </li>
@@ -22,7 +22,7 @@
                     </a>
                     <ul class="dropdown-menu">
                         @foreach ($brands as $brand)
-                            <li><a class="dropdown-item" href="/?brand={{ $brand->name }}">{{ $brand->name }}</a></li>
+                            <li><a class="dropdown-item" href="/?brand={{ $brand->slug }}">{{ $brand->name }}</a></li>
                         @endforeach
                     </ul>
                 </li>

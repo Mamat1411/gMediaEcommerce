@@ -25,14 +25,14 @@
                                 <div class="card-body p-4">
                                     <div class="text-center">
                                         <!-- Product name-->
-                                        <h5 class="fw-bolder"><a href="/detail/{{ $product->name }}" class="text-decoration-none">{{ $product->name }}</a></h5>
+                                        <h5 class="fw-bolder"><a href="/detail/{{ $product->slug }}" class="text-decoration-none">{{ $product->name }}</a></h5>
                                         <!-- Product price-->
                                         Rp @convert($product->price),-
                                     </div>
                                 </div>
                                 <!-- Product actions-->
                                 <div class="card-footer p-4 pt-0 border-top-0 bg-transparent d-flex justify-content-center">
-                                    <div class="text-center"><a class="btn btn-info mt-auto mx-2" href="/detail/{{ $product->name }}">Detail</a></div>
+                                    <div class="text-center"><a class="btn btn-info mt-auto mx-2" href="/detail/{{ $product->slug }}">Detail</a></div>
                                     <div class="text-center"><a class="btn btn-warning mt-auto" href="#">Add to cart</a></div>
                                 </div>
                             </div>

@@ -16,7 +16,7 @@ return new class extends Migration
             $table->foreignId('categoryId');
             $table->foreignId('brandId');
             $table->string('name');
-            $table->string('slug');
+            $table->string('slug')->unique();
             $table->integer('price');
             $table->text('description');
             $table->integer('stock');

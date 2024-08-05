@@ -17,19 +17,22 @@ class Product extends Model
         $query->when($filters['search'] ?? false, function ($query, $search) {
             $query->where(function ($query) use ($search) {
                 $query->where('name', 'like', '%' . $search . '%')
+                    ->orWhere('slug', 'like', '%' . $search . '%')
                     ->orWhere('description', 'like', '%' . $search . '%');
             });
         });
 
         $query->when($filters['category'] ?? false, function ($query, $category) {
             return $query->whereHas('category', function ($query) use ($category) {
-                $query->where('name', $category);
+                $query->where('name', 'like', '%' . $category . '%')
+                      ->orWhere('slug', 'like', '%' . $category . '%');
             });
         });
 
         $query->when($filters['brand'] ?? false, function ($query, $brand) {
             return $query->whereHas('brand', function ($query) use ($brand) {
-                $query->where('name', $brand);
+                $query->where('name', 'like', '%' . $brand . '%')
+                      ->orWhere('slug', 'like', '%' . $brand . '%');
             });
         });
     }

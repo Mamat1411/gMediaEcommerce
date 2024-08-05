@@ -32,10 +32,10 @@
                     <td>Rp @convert($product->price),-</td>
                     <td>{{ $product->stock }}</td>
                     <td>
-                        <a href="/dashboard/products/{{ $product->name }}" class="badge bg-primary"><i
+                        <a href="/dashboard/products/{{ $product->slug }}" class="badge bg-primary"><i
                                 class="bi bi-eye"></i></a>
-                        <a href="/dashboard/products/edit/{{ $product->name }}" class="badge bg-success"><i class="bi bi-pencil-square"></i></a>
-                        <form action="/dashboard/products/{{ $product->name }}" method="post" class="d-inline">
+                        <a href="/dashboard/products/edit/{{ $product->slug }}" class="badge bg-success"><i class="bi bi-pencil-square"></i></a>
+                        <form action="/dashboard/products/{{ $product->slug }}" method="post" class="d-inline">
                             @method('delete')
                             @csrf
                             <button type="submit" class="badge bg-danger border-0" onclick="return confirm('Are You Sure?')"><i class="bi bi-x-circle"></i></button>
