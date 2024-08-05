@@ -3,7 +3,7 @@
     <section class="py-5">
         <div class="container px-4 px-lg-5 my-5">
             <div class="row gx-4 gx-lg-5 align-items-center">
-                <div class="col-md-6"><img class="card-img-top mb-5 mb-md-0" src="https://source.unsplash.com/600x700?{{ $product->category->name }}" alt="Product Image" /></div>
+                <div class="col-md-6"><img class="card-img-top mb-5 mb-md-0" src="https://picsum.photos/600/700?{{ $product->category->name }}" alt="Product Image" /></div>
                 <div class="col-md-6">
                     <h1 class="display-5 fw-bolder">{{ $product->name }}</h1>
                     <div class="fs-5">
@@ -34,7 +34,7 @@
                     <div class="col-md-4 mb-3">
                         <div class="card">
                             <!-- Product image-->
-                            <img class="card-img-top" src="https://source.unsplash.com/450x300?{{ $related->category->name }}" alt="Product Image" />
+                            <img class="card-img-top" src="https://picsum.photos/450/300?{{ $related->category->name }}" alt="Product Image" />
                             <!-- Product details-->
                             <div class="card-body p-4">
                                 <div class="text-center">
