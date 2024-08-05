@@ -20,7 +20,7 @@
                                     <a href="/?category={{ $product->category->name }}" class="text-decoration-none text-white">{{ $product->category->name }}</a>
                                 </div>
                                 <!-- Product image-->
-                                <img class="card-img-top" src="https://source.unsplash.com/450x300?{{ $product->category->name }}" alt="Product Image" />
+                                <img class="card-img-top" src="https://picsum.photos/450/300?{{ $product->category->name }}" alt="Product Image" />
                                 <!-- Product details-->
                                 <div class="card-body p-4">
                                     <div class="text-center">
