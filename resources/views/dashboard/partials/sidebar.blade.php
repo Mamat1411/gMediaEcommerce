@@ -20,6 +20,14 @@
                     </a>
                 </li>
                 <li class="nav-item">
+                    <a class="nav-link d-flex align-items-center gap-2" href="/dashboard/category">
+                        <svg class="bi">
+                            <use xlink:href="#tags" />
+                        </svg>
+                        Categories
+                    </a>
+                </li>
+                <li class="nav-item">
                     <a class="nav-link d-flex align-items-center gap-2" href="/dashboard/products">
                         <svg class="bi">
                             <use xlink:href="#cart" />
