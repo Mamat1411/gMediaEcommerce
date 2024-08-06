@@ -22,7 +22,7 @@
             <tbody>
                 @foreach ($brands as $brand)
                     <tr>
-                        <th scope="row">{{ $loop->iteration }}</th>
+                        <th scope="row">{{ $brands->firstItem() + $loop->index }}</th>
                         <td>{{ $brand->name }}</td>
                         <td>
                             <a href="/dashboard/brand/edit/{{ $brand->slug }}" class="badge bg-success"><i class="bi bi-pencil-square"></i></a>

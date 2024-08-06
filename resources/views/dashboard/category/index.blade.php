@@ -22,7 +22,7 @@
             <tbody>
                 @foreach ($categories as $category)
                     <tr>
-                        <th scope="row">{{ $loop->iteration }}</th>
+                        <th scope="row">{{ $categories->firstItem() + $loop->index }}</th>
                         <td>{{ $category->name }}</td>
                         <td>
                             <a href="/dashboard/category/edit/{{ $category->slug }}" class="badge bg-success"><i class="bi bi-pencil-square"></i></a>

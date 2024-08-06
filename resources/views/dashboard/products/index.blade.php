@@ -25,7 +25,7 @@
         <tbody>
             @foreach ($products as $product)
                 <tr>
-                    <th scope="row">{{ $loop->iteration }}</th>
+                    <th scope="row">{{ $products->firstItem() + $loop->index }}</th>
                     <td>{{ $product->name }}</td>
                     <td>{{ $product->category->name }}</td>
                     <td>{{ $product->brand->name }}</td>
