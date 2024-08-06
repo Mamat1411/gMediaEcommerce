@@ -46,4 +46,12 @@ Route::group(['middleware' => 'auth'], function () {
     Route::delete('/dashboard/category/{category:slug}', 'DashboardCategoryController@destroy');
     Route::get('/dashboard/category/checkSlug', 'DashboardCategoryController@checkSlug');
 
+    //Dashboard Brand Routes
+    Route::get('/dashboard/brand', 'DashboardBrandController@index');
+    Route::get('/dashboard/brand/create', 'DashboardBrandController@create');
+    Route::post('/dashboard/brand', 'DashboardBrandController@store');
+    Route::get('/dashboard/brand/edit/{brand:slug}', 'DashboardBrandController@edit');
+    Route::patch('/dashboard/brand/{brand:slug}', 'DashboardBrandController@update');
+    Route::delete('/dashboard/brand/{brand:slug}', 'DashboardBrandController@destroy');
+    Route::get('/dashboard/brand/checkSlug', 'DashboardBrandController@checkSlug');
 });

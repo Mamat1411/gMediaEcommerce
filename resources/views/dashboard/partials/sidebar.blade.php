@@ -12,19 +12,19 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link d-flex align-items-center gap-2" href="#">
-                        <svg class="bi">
-                            <use xlink:href="#file-earmark" />
-                        </svg>
-                        Orders
-                    </a>
-                </li>
-                <li class="nav-item">
                     <a class="nav-link d-flex align-items-center gap-2" href="/dashboard/category">
                         <svg class="bi">
                             <use xlink:href="#tags" />
                         </svg>
                         Categories
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link d-flex align-items-center gap-2" href="/dashboard/brand">
+                        <svg class="bi">
+                            <use xlink:href="#brand" />
+                        </svg>
+                        Brand
                     </a>
                 </li>
                 <li class="nav-item">
@@ -41,6 +41,14 @@
                             <use xlink:href="#people" />
                         </svg>
                         Customers
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link d-flex align-items-center gap-2" href="#">
+                        <svg class="bi">
+                            <use xlink:href="#file-earmark" />
+                        </svg>
+                        Orders
                     </a>
                 </li>
                 <li class="nav-item">
