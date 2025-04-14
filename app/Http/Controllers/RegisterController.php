@@ -34,7 +34,7 @@ class RegisterController extends Controller
      */
     public function store(Request $request)
     {
-        $request -> validate([
+        $validatedData = $request -> validate([
             'name' => 'required|max:300',
             'username' => 'required|unique:users|max:300',
             'email' => 'required|email:dns|unique:users|max:300',
@@ -43,11 +43,11 @@ class RegisterController extends Controller
         ]);
 
         User::create([
-            'name' => $request->name,
-            'username' => $request->username,
-            'email' => $request->email,
-            'password' => bcrypt($request['password']),
-            'role' => $request->role
+            'name' => $validatedData['name'],
+            'username' => $validatedData['username'],
+            'email' => $validatedData['email'],
+            'password' => bcrypt($validatedData['password']),
+            'role' => $validatedData['role'],
         ]);
 
         return redirect('/login') -> with('status', 'You\'ve Registered. Please Sign In Now');
