@@ -1,6 +1,6 @@
 <header class="navbar sticky-top bg-dark flex-md-nowrap p-0 shadow" data-bs-theme="dark">
-    <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3 fs-6 " href="/dashboard"><img src="{{ asset('img/GMediaHD.png') }}"
-            alt="GMedia Logo" style="width: 100px"></a>
+    <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3 fs-6 " href="/dashboard"><img src="{{ asset('img/E-Commerce-Logo-Design-PNG.png') }}"
+            alt="E-Commerce Logo" style="width: 100px; height: 50px;"></a>
 
     <ul class="navbar-nav flex-row d-md-none">
         <li class="nav-item text-nowrap">
