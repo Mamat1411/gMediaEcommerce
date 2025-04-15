@@ -36,7 +36,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/dashboard/products/edit/{product:slug}', 'DashboardProductsController@edit');
     Route::put('/dashboard/products/{product:slug}', 'DashboardProductsController@update');
     Route::delete('/dashboard/products/{product:slug}', 'DashboardProductsController@destroy');
-    Route::get('/dashboard/products/checkSlug', 'DashboardProductsController@checkSlug');
+    Route::get('/dashboard/product/checkSlug', 'DashboardBrandController@checkSlug');
 
     //Dashboard Category Routes
     Route::get('/dashboard/category', 'DashboardCategoryController@index');
