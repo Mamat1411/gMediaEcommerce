@@ -7,6 +7,7 @@ use App\Models\Category;
 use App\Models\Product;
 use Cviebrock\EloquentSluggable\Services\SlugService;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
 
 class DashboardProductsController extends Controller
 {
@@ -40,6 +41,7 @@ class DashboardProductsController extends Controller
     {
         $validatedData = $request->validate([
             'name' => 'required',
+            'slug' => 'required|unique:products',
             'categoryId' => 'required',
             'brandId' => 'required',
             'price' => 'required|numeric',
@@ -82,6 +84,7 @@ class DashboardProductsController extends Controller
     {
         $validatedData = $request->validate([
             'name' => 'required',
+            'slug' => ['required', Rule::unique('products')->ignore($product)],
             'categoryId' => 'required',
             'brandId' => 'required',
             'price' => 'required|numeric',

@@ -10,6 +10,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 class Product extends Model
 {
     use HasFactory, Sluggable;
+    protected $table = 'products';
     protected $guarded = ['id'];
     protected $with = ['brand', 'category'];
 

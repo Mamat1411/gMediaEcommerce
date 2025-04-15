@@ -99,5 +99,6 @@
             </div>
         </form>
     </div>
+    <script src="{{ asset('js/trixEditor.js') }}"></script>
     <script src="{{ asset('js/Product.js') }}"></script>
 @endsection

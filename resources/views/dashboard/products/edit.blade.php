@@ -5,7 +5,7 @@
     </div>
 
     <div class="col-lg-8">
-        <form action="/dashboard/products/{{ $product->name }}" method="post">
+        <form action="/dashboard/products/{{ $product->slug }}" method="post">
             @method('patch')
             @csrf
             <div class="mb-3">
@@ -13,6 +13,16 @@
                 <input type="text" class="form-control @error('name') is-invalid @enderror" id="name" name="name"
                     placeholder="Product Name Here" value="{{ old('name', $product->name) }}" required autofocus>
                 @error('name')
+                    <div class="invalid-feedback">
+                        {{ $message }}
+                    </div>
+                @enderror
+            </div>
+            <div class="mb-3">
+                <label for="slug" class="form-label">Slug</label>
+                <input type="text" class="form-control @error('slug') is-invalid @enderror" id="slug" name="slug"
+                    placeholder="Product Slug Here" value="{{ old('slug', $product->slug) }}" required>
+                @error('slug')
                     <div class="invalid-feedback">
                         {{ $message }}
                     </div>
@@ -90,9 +100,6 @@
             </div>
         </form>
     </div>
-    <script>
-        document.addEventListener('trix-file-accept', function(e) {
-            e.preventDefault();
-        });
-    </script>
+    <script src="{{ asset('js/trixEditor.js') }}"></script>
+    <script src="{{ asset('js/Product.js') }}"></script>
 @endsection
