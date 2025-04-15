@@ -1,0 +1,12 @@
+document.addEventListener("trix-file-accept", function (e) {
+    e.preventDefault();
+});
+
+const name = document.querySelector("#name");
+const slug = document.querySelector("#slug");
+
+name.addEventListener("change", function () {
+    fetch("/dashboard/brand/checkSlug?name=" + name.value)
+        .then((response) => response.json())
+        .then((data) => (slug.value = data.slug));
+});

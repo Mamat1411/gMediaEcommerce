@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Brand;
 use App\Models\Category;
 use App\Models\Product;
+use Cviebrock\EloquentSluggable\Services\SlugService;
 use Illuminate\Http\Request;
 
 class DashboardProductsController extends Controller
@@ -99,5 +100,10 @@ class DashboardProductsController extends Controller
     {
         Product::destroy($product->id);
         return redirect('/dashboard/products') -> with('status', 'Product Deleted');
+    }
+
+    public function checkSlug(Request $request) {
+        $slug = SlugService::createSlug(Product::class, 'slug', $request->name);
+        return response()->json(['slug' => $slug]);
     }
 }

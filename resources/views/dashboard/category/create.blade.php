@@ -20,7 +20,7 @@
             <div class="mb-3">
                 <label for="slug" class="form-label">Slug</label>
                 <input type="text" class="form-control @error('slug') is-invalid @enderror" id="slug" name="slug"
-                    placeholder="Category Slug Here" value="{{ old('slug') }}" required autofocus>
+                    placeholder="Category Slug Here" value="{{ old('slug') }}" required>
                 @error('slug')
                     <div class="invalid-feedback">
                         {{ $message }}
@@ -35,14 +35,5 @@
         </form>
     </div>
 
-    <script>
-        const name = document.querySelector('#name');
-        const slug = document.querySelector('#slug');
-
-        name.addEventListener('change', function () {
-            fetch('/dashboard/category/checkSlug?name=' + name.value)
-                .then(response => response.json())
-                .then(data => slug.value = data.slug);
-         });
-    </script>
+    <script src="{{ asset('js/Category.js') }}"></script>
 @endsection

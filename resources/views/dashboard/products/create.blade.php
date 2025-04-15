@@ -18,6 +18,16 @@
                 @enderror
             </div>
             <div class="mb-3">
+                <label for="slug" class="form-label">Slug</label>
+                <input type="text" class="form-control @error('slug') is-invalid @enderror" id="slug" name="slug"
+                    placeholder="Product Slug Here" value="{{ old('slug') }}" required>
+                @error('slug')
+                    <div class="invalid-feedback">
+                        {{ $message }}
+                    </div>
+                @enderror
+            </div>
+            <div class="mb-3">
                 <label for="category" class="form-label">Category</label>
                 <select class="form-select mb-3 @error('categoryId') is-invalid @enderror" id="categoryId"
                     name="categoryId">
@@ -89,9 +99,5 @@
             </div>
         </form>
     </div>
-    <script>
-        document.addEventListener('trix-file-accept', function(e) {
-            e.preventDefault();
-        });
-    </script>
+    <script src="{{ asset('js/Product.js') }}"></script>
 @endsection
