@@ -34,7 +34,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('/dashboard/products', 'DashboardProductsController@store');
     Route::get('/dashboard/products/{product:slug}', 'DashboardProductsController@show');
     Route::get('/dashboard/products/edit/{product:slug}', 'DashboardProductsController@edit');
-    Route::patch('/dashboard/products/{product:slug}', 'DashboardProductsController@update');
+    Route::put('/dashboard/products/{product:slug}', 'DashboardProductsController@update');
     Route::delete('/dashboard/products/{product:slug}', 'DashboardProductsController@destroy');
     Route::get('/dashboard/products/checkSlug', 'DashboardProductsController@checkSlug');
 
@@ -43,7 +43,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/dashboard/category/create', 'DashboardCategoryController@create');
     Route::post('/dashboard/category', 'DashboardCategoryController@store');
     Route::get('/dashboard/category/edit/{category:slug}', 'DashboardCategoryController@edit');
-    Route::patch('/dashboard/category/{category:slug}', 'DashboardCategoryController@update');
+    Route::put('/dashboard/category/{category:slug}', 'DashboardCategoryController@update');
     Route::delete('/dashboard/category/{category:slug}', 'DashboardCategoryController@destroy');
     Route::get('/dashboard/category/checkSlug', 'DashboardCategoryController@checkSlug');
 
@@ -52,7 +52,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/dashboard/brand/create', 'DashboardBrandController@create');
     Route::post('/dashboard/brand', 'DashboardBrandController@store');
     Route::get('/dashboard/brand/edit/{brand:slug}', 'DashboardBrandController@edit');
-    Route::patch('/dashboard/brand/{brand:slug}', 'DashboardBrandController@update');
+    Route::put('/dashboard/brand/{brand:slug}', 'DashboardBrandController@update');
     Route::delete('/dashboard/brand/{brand:slug}', 'DashboardBrandController@destroy');
     Route::get('/dashboard/brand/checkSlug', 'DashboardBrandController@checkSlug');
 });

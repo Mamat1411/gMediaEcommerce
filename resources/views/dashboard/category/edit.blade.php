@@ -6,7 +6,7 @@
 
     <div class="col-lg-8">
         <form action="/dashboard/category/{{ $category->slug }}" method="post">
-            @method('patch')
+            @method('put')
             @csrf
             <div class="mb-3">
                 <label for="name" class="form-label">Name</label>
