@@ -43,7 +43,7 @@ class ProductController extends Controller
      */
     public function show(Product $product)
     {
-        $relatedProducts = Product::where('categoryId', $product->categoryId)->orWhere('brandId', $product->brandId)->limit(4)->get();
+        $relatedProducts = Product::where('category_id', $product->category_id)->orWhere('brand_id', $product->brand_id)->limit(4)->get();
         return view('detail', [
             'title' => $product->name,
             'product' => $product,

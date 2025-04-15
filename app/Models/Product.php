@@ -41,12 +41,12 @@ class Product extends Model
 
     public function brand(): BelongsTo
     {
-        return $this->belongsTo(Brand::class, 'brandId');
+        return $this->belongsTo(Brand::class);
     }
 
     public function category(): BelongsTo
     {
-        return $this->belongsTo(Category::class, 'categoryId');
+        return $this->belongsTo(Category::class);
     }
 
     public function sluggable() : array {
