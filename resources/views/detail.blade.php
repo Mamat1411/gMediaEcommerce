@@ -71,12 +71,15 @@
                                 <!-- Product actions-->
                                 <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
                                     <div class="text-center">
-                                        <a class="btn btn-info mt-auto mx-2" href="/detail/{{ $related->slug }}">Detail</a>
+                                        <a class="btn btn-info mt-auto mb-2" href="/detail/{{ $related->slug }}">Detail</a>
                                     </div>
                                     @auth
                                         @if (auth()->user()->role != 'admin')
                                             <div class="text-center">
-                                                <a class="btn btn-outline-dark mt-auto" href="#">Add to cart</a>
+                                                <a class="btn btn-outline-dark mt-auto" href="#">
+                                                    <i class="bi-cart-fill me-1"></i>
+                                                    Add to cart
+                                                </a>
                                             </div>
                                         @endif
                                     @endauth
