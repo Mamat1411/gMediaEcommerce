@@ -85,9 +85,9 @@
                     </div>
                 @enderror
             </div>
-            <div class="form-group row">
+            <div class="mb-3">
                 <input type="hidden" name="oldImage" value="{{ $product->product_image }}">
-                <label for="product_image" class="col-sm-2 col-form-label">Gambar Produk</label>
+                <label for="product_image" class="col-sm-2 col-form-label">Product Image</label>
                 <div class="col-sm-8">
                     <input class="form-control col-sm-8 mb-sm-2 @error('product_image') is-invalid @enderror" type="file" name="product_image" id="product_image"
                         onchange="previewImage()">
