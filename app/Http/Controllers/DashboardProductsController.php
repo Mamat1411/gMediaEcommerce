@@ -7,6 +7,8 @@ use App\Models\Category;
 use App\Models\Product;
 use Cviebrock\EloquentSluggable\Services\SlugService;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\Rule;
 
 class DashboardProductsController extends Controller
@@ -42,12 +44,37 @@ class DashboardProductsController extends Controller
         $validatedData = $request->validate([
             'name' => 'required',
             'slug' => 'required|unique:products',
-            'categoryId' => 'required',
-            'brandId' => 'required',
+            'category_id' => 'required',
+            'brand_id' => 'required',
             'price' => 'required|numeric',
             'stock' => 'required|numeric',
+            'product_image' => 'image|file|max:2048',
             'description' => 'required'
         ]);
+        // $validatedData = Validator::make($request->all(), [
+        //     'name' => 'required',
+        //     'slug' => 'required|unique:products',
+        //     'category_id' => 'required',
+        //     'brand_id' => 'required',
+        //     'price' => 'required|numeric',
+        //     'stock' => 'required|numeric',
+        //     'product_image' => 'image|file|max:2048',
+        //     'description' => 'required'
+        // ]);
+        // if ($validatedData->fails()) {
+        //     return $validatedData->errors();
+        // }
+
+        $product_image = null;
+        if ($request->hasFile('product_image')) {
+            $file = $request->file('product_image');
+            $extension = $file->getClientOriginalExtension();
+            $filename = date("Ymd", time()).'-'.$validatedData['slug'].'.'.$extension;
+            $uploadedFile = $file->storeAs('product-images/', $filename);
+            $product_image = $uploadedFile;
+        }
+
+        $validatedData['product_image'] = $product_image;
 
         Product::create($validatedData);
         return redirect('/dashboard/products')->with('status', 'New Product Added');
@@ -85,12 +112,27 @@ class DashboardProductsController extends Controller
         $validatedData = $request->validate([
             'name' => 'required',
             'slug' => ['required', Rule::unique('products')->ignore($product)],
-            'categoryId' => 'required',
-            'brandId' => 'required',
+            'category_id' => 'required',
+            'brand_id' => 'required',
             'price' => 'required|numeric',
             'stock' => 'required|numeric',
+            'product_image' => 'image|file|max:2048',
             'description' => 'required'
         ]);
+
+        $product_image = $product->product_image;
+        if ($request->hasFile('product_image')) {
+            if ($request->oldImage) {
+                Storage::delete($request->oldImage);
+            }
+            $file = $request->file('product_image');
+            $extension = $file->getClientOriginalExtension();
+            $filename = date("Ymd", time()).'-'.$validatedData['slug'].'.'.$extension;
+            $uploadedFile = $file->storeAs('product-images/', $filename);
+            $product_image = $uploadedFile;
+        }
+
+        $validatedData['product_image'] = $product_image;
 
         Product::where('id', $product->id)->update($validatedData);
         return redirect('/dashboard/products')->with('status', 'Product '. $product->name .' Edited');
@@ -101,6 +143,9 @@ class DashboardProductsController extends Controller
      */
     public function destroy(Product $product)
     {
+        if ($product->product_image) {
+            Storage::delete($product->product_image);
+        }
         Product::destroy($product->id);
         return redirect('/dashboard/products') -> with('status', 'Product Deleted');
     }

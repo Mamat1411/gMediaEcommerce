@@ -49,8 +49,11 @@
                                         class="text-decoration-none text-white">{{ $product->category->name }}</a>
                                 </div>
                                 <!-- Product image-->
-                                <img class="card-img-top" src="https://picsum.photos/450/300?{{ $product->category->name }}"
-                                    alt="Product Image" />
+                                @if ($product->product_image != null)
+                                    <img class="card-img-top img" src="{{ asset('storage/' . $product->product_image) }}" alt="Product Image" height="254">
+                                @else
+                                    <img class="card-img-top" src="https://picsum.photos/450/300?{{ $product->category->name }}" alt="Product Image" />
+                                @endif
                                 <!-- Product details-->
                                 <div class="card-body p-4">
                                     <div class="text-center">
@@ -63,10 +66,12 @@
                                 </div>
                                 <!-- Product actions-->
                                 <div class="card-footer p-4 pt-0 border-top-0 bg-transparent d-flex justify-content-center">
-                                    <div class="text-center"><a class="btn btn-info mt-auto mx-2"
-                                            href="/detail/{{ $product->slug }}">Detail</a></div>
-                                    <div class="text-center"><a class="btn btn-warning mt-auto" href="#">Add to
-                                            cart</a></div>
+                                    <div class="text-center">
+                                        <a class="btn btn-info mt-auto mx-2" href="/detail/{{ $product->slug }}">Detail</a>
+                                    </div>
+                                    @if (auth()->user()->role != 'admin')
+                                        <div class="text-center"><a class="btn btn-warning mt-auto" href="#">Add to cart</a></div>
+                                    @endif
                                 </div>
                             </div>
                         </div>

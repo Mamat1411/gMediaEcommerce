@@ -7,15 +7,15 @@ productName.addEventListener("change", function () {
         .then((data) => (slug.value = data.slug));
 });
 
-// function previewImage() {
-//     const image = document.querySelector('#product_image');
-//     const imgPreview = document.querySelector('.img-preview');
+function previewImage() {
+    const image = document.querySelector('#product_image');
+    const imgPreview = document.querySelector('.img-preview');
 
-//     imgPreview.style.display = 'block';
+    imgPreview.style.display = 'block';
 
-//     const ofReader = new FileReader();
-//     ofReader.readAsDataURL(image.files[0]);
-//     ofReader.onload = function (oFREvent) {
-//         imgPreview.src = oFREvent.target.result;
-//     }
-// }
+    const ofReader = new FileReader();
+    ofReader.readAsDataURL(image.files[0]);
+    ofReader.onload = function (oFREvent) {
+        imgPreview.src = oFREvent.target.result;
+    }
+}

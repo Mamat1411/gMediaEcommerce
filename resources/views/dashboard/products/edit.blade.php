@@ -5,7 +5,7 @@
     </div>
 
     <div class="col-lg-8">
-        <form action="/dashboard/products/{{ $product->slug }}" method="post">
+        <form action="/dashboard/products/{{ $product->slug }}" method="post"  enctype="multipart/form-data">
             @method('put')
             @csrf
             <div class="mb-3">
@@ -30,18 +30,18 @@
             </div>
             <div class="mb-3">
                 <label for="category" class="form-label">Category</label>
-                <select class="form-select mb-3 @error('categoryId') is-invalid @enderror" id="categoryId"
-                    name="categoryId">
+                <select class="form-select mb-3 @error('category_id') is-invalid @enderror" id="category_id"
+                    name="category_id">
                     <option>--Please Select Product Category--</option>
                     @foreach ($categories as $category)
-                        @if (old('categoryId', $product->categoryId) == $category->id)
+                        @if (old('category_id', $product->category_id) == $category->id)
                             <option value="{{ $category->id }}" selected>{{ $category->name }}</option>
                         @else
                             <option value="{{ $category->id }}">{{ $category->name }}</option>
                         @endif
                     @endforeach
                 </select>
-                @error('categoryId')
+                @error('category_id')
                     <div class="invalid-feedback">
                         {{ $message }}
                     </div>
@@ -49,17 +49,17 @@
             </div>
             <div class="mb-3">
                 <label for="brand" class="form-label">Brand</label>
-                <select class="form-select mb-3 @error('brandId') is-invalid @enderror" id="brandId" name="brandId">
+                <select class="form-select mb-3 @error('brand_id') is-invalid @enderror" id="brand_id" name="brand_id">
                     <option>--Please Select Product Brand--</option>
                     @foreach ($brands as $brand)
-                        @if (old('brandId', $product->brandId) == $brand->id)
+                        @if (old('brand_id', $product->brand_id) == $brand->id)
                             <option value="{{ $brand->id }}" selected>{{ $brand->name }}</option>
                         @else
                             <option value="{{ $brand->id }}">{{ $brand->name }}</option>
                         @endif
                     @endforeach
                 </select>
-                @error('brandId')
+                @error('brand_id')
                     <div class="invalid-feedback">
                         {{ $message }}
                     </div>
@@ -84,6 +84,21 @@
                         {{ $message }}
                     </div>
                 @enderror
+            </div>
+            <div class="form-group row">
+                <input type="hidden" name="oldImage" value="{{ $product->product_image }}">
+                <label for="product_image" class="col-sm-2 col-form-label">Gambar Produk</label>
+                <div class="col-sm-8">
+                    <input class="form-control col-sm-8 mb-sm-2 @error('product_image') is-invalid @enderror" type="file" name="product_image" id="product_image"
+                        onchange="previewImage()">
+                    @error('product_image')
+                        <div class="invalid-feedback">
+                            {{ $message }}
+                        </div>
+                    @enderror
+
+                    <img src="{{ asset('storage/' . $product->product_image) }}" alt="Product Related Photo" class="img-preview img-fluid" width="300" height="300">
+                </div>
             </div>
             <div class="mb-3">
                 <label for="description" class="form-label">Description</label>

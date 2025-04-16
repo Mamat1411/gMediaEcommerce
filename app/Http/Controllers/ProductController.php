@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Brand;
 use App\Models\Category;
 use App\Models\Product;
+use Illuminate\Database\Eloquent\Builder as EloquentBuilder;
 use Illuminate\Http\Request;
 
 class ProductController extends Controller
@@ -43,7 +44,15 @@ class ProductController extends Controller
      */
     public function show(Product $product)
     {
-        $relatedProducts = Product::where('category_id', $product->category_id)->orWhere('brand_id', $product->brand_id)->limit(4)->get();
+        $relatedProducts = Product::where([
+                                            ['category_id', '=', $product->category_id],
+                                            ['id', '<>', $product->id]
+                                          ])
+                                          ->orWhere(function (EloquentBuilder $query) use ($product) {
+                                            $query->where('brand_id', $product->brand_id)
+                                                  ->where('id', '<>', $product->id);
+                                          })
+                                          ->limit(4)->get();
         return view('detail', [
             'title' => $product->name,
             'product' => $product,

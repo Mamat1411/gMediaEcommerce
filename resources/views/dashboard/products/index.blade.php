@@ -19,6 +19,7 @@
                 <th scope="col">Brand</th>
                 <th scope="col">Price</th>
                 <th scope="col">Stock</th>
+                <th scope="col">Image</th>
                 <th scope="col">Action</th>
             </tr>
         </thead>
@@ -31,6 +32,13 @@
                     <td>{{ $product->brand->name }}</td>
                     <td>Rp @convert($product->price),-</td>
                     <td>{{ $product->stock }}</td>
+                    <td class="text-center">
+                        @if ($product->product_image != null)
+                            <img src="{{ asset('storage/' . $product->product_image) }}" alt="Product Related Photo" class="img-fluid" width="200" height="200" style="max-width: 200px; max-height: 200px">
+                        @else
+                            <img src="https://picsum.photos/200/200?{{ $product->category->name }}" alt="Product Related Photo" class="img-fluid" width="200" height="200">
+                        @endif
+                    </td>
                     <td>
                         <a href="/dashboard/products/{{ $product->slug }}" class="badge bg-primary"><i
                                 class="bi bi-eye"></i></a>
