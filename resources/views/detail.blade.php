@@ -26,12 +26,14 @@
                     <p class="lead">{!! $product->description !!}</p>
                     <div class="d-flex">
                         <button class="btn btn-dark disabled me-2">Stock: {{ $product->stock }}</button>
-                        @if (auth()->user()->role != 'admin')
-                            <button class="btn btn-outline-dark flex-shrink-0 me-2" type="button">
-                                <i class="bi-cart-fill me-1"></i>
-                                Add to cart
-                            </button>
-                        @endif
+                        @auth
+                            @if (auth()->user()->role != 'admin')
+                                <button class="btn btn-outline-dark flex-shrink-0 me-2" type="button">
+                                    <i class="bi-cart-fill me-1"></i>
+                                    Add to cart
+                                </button>
+                            @endif
+                        @endauth
                         <a href="/" class="btn btn-warning text-decoration-none">Back To Products</a>
                     </div>
                 </div>
@@ -71,11 +73,13 @@
                                     <div class="text-center">
                                         <a class="btn btn-info mt-auto mx-2" href="/detail/{{ $related->slug }}">Detail</a>
                                     </div>
-                                    @if (auth()->user()->role != 'admin')
-                                        <div class="text-center">
-                                            <a class="btn btn-outline-dark mt-auto" href="#">Add to cart</a>
-                                        </div>
-                                    @endif
+                                    @auth
+                                        @if (auth()->user()->role != 'admin')
+                                            <div class="text-center">
+                                                <a class="btn btn-outline-dark mt-auto" href="#">Add to cart</a>
+                                            </div>
+                                        @endif
+                                    @endauth
                                 </div>
                             </div>
                         </div>

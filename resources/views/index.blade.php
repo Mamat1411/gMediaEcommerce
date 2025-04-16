@@ -69,9 +69,11 @@
                                     <div class="text-center">
                                         <a class="btn btn-info mt-auto mx-2" href="/detail/{{ $product->slug }}">Detail</a>
                                     </div>
-                                    @if (auth()->user()->role != 'admin')
-                                        <div class="text-center"><a class="btn btn-warning mt-auto" href="#">Add to cart</a></div>
-                                    @endif
+                                    @auth
+                                        @if (auth()->user()->role != 'admin')
+                                            <div class="text-center"><a class="btn btn-warning mt-auto" href="#">Add to cart</a></div>
+                                        @endif
+                                    @endauth
                                 </div>
                             </div>
                         </div>
